@@ -3,37 +3,63 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self'; style-src 'self'; script-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
-<meta name="referrer" content="no-referrer">
-<title>AchadinhosPW</title>
-<meta name="description" content="AchadinhosPW: curadoria de ofertas da Shopee e do Mercado Livre com desconto de verdade.">
-<link rel="icon" href="favicon.png">
-<link rel="stylesheet" href="style.css">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' https:; style-src 'self'; script-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'self'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>AchadinhosPW · Ofertas com desconto de verdade</title>
+<meta name="description" content="Os melhores achados da Shopee e do Mercado Livre, conferidos no histórico de preço.">
+<link rel="icon" href="/favicon.png">
+<link rel="stylesheet" href="/style.css">
 </head>
 <body>
 <div class="wrap">
-  <header class="top"><img src="logo-pw.png" alt="Logo PW"><a href="./">AchadinhosPW</a></header>
+  <header class="top"><img src="/logo-pw.png" alt="Logo PW"><a href="./">AchadinhosPW</a></header>
+  <nav class="cats">
+      <a href="/" class="ativo">Todas</a>
+      <a href="/notebooks">Notebooks</a>
+      <a href="/celulares">Celulares</a>
+      <a href="/relogios">Relógios e smartwatches</a>
+      <a href="/tablets">Tablets</a>
+      <a href="/roupas-femininas">Roupas femininas</a>
+      <a href="/roupas-masculinas">Roupas masculinas</a>
+      <a href="/roupas-infantis">Roupas infantis</a>
+  </nav>
 
-  <h1>Achados com <em>desconto de verdade</em>.</h1>
-  <p class="lead">Selecionamos ofertas da Shopee e do Mercado Livre, conferimos o histórico de preço antes de divulgar e publicamos os melhores achados no Instagram, no TikTok e nos nossos grupos.</p>
+  <main id="vitrine" data-categoria="">
+    <h1>Ofertas com <em>desconto de verdade</em></h1>
+    <p class="lead">Os melhores achados da Shopee e do Mercado Livre, conferidos no histórico de preço.</p>
 
-  <div class="cards">
-    <div class="card"><b>Tecnologia</b><span>Notebooks, celulares, relógios e tablets.</span></div>
-    <div class="card"><b>Moda</b><span>Roupas femininas, masculinas e infantis.</span></div>
-    <div class="card"><b>Casa</b><span>Cozinha, ferramentas e utilidades.</span></div>
-  </div>
+    <form id="filtros" class="filtros">
+      <input type="search" name="busca" placeholder="Buscar produto" maxlength="60" aria-label="Buscar produto">
+      <select name="ordem" aria-label="Ordenar por">
+        <option value="custo-beneficio">Melhor custo-benefício</option>
+        <option value="qualidade">Melhor avaliados</option>
+        <option value="menor-preco">Menor preço</option>
+        <option value="maior-desconto">Maior desconto</option>
+        <option value="maior-economia">Maior economia em R$</option>
+      </select>
+      <select name="loja" aria-label="Loja">
+        <option value="">Todas as lojas</option>
+        <option value="shopee">Shopee</option>
+        <option value="mercado_livre">Mercado Livre</option>
+      </select>
+      <input type="number" name="min" placeholder="Preço mín." min="0" inputmode="numeric" aria-label="Preço mínimo">
+      <input type="number" name="max" placeholder="Preço máx." min="0" inputmode="numeric" aria-label="Preço máximo">
+    </form>
 
-  <p class="small">Em breve: rankings diários por categoria, com os melhores produtos em custo-benefício, qualidade e preço.</p>
+    <p id="status" class="small" role="status"></p>
+    <div id="lista" class="grade"></div>
+  </main>
 
   <section class="how">
-  <h2 class="small">Como funciona</h2>
-  <p>Cada oferta passa por uma checagem de preço. Só dizemos "menor preço" quando o histórico confirma. Os links são de afiliado: você paga o mesmo preço e nós podemos receber uma comissão da loja.</p>
+    <h2 class="small">Como funciona</h2>
+    <p class="small">Cada oferta passa por uma checagem de preço antes de entrar aqui, e sai do ar quando a promoção acaba. Os links são de afiliado: você paga o mesmo preço e nós podemos receber uma comissão da loja. Confira sempre o valor final na loja.</p>
   </section>
 
   <footer>
-    <nav><a href="termos">Termos de Uso</a><a href="privacidade">Política de Privacidade</a><a href="https://www.instagram.com/pwachadinhos/" rel="noopener noreferrer">Instagram @pwachadinhos</a></nav>
+    <nav><a href="/termos">Termos de Uso</a><a href="/privacidade">Política de Privacidade</a><a href="https://www.instagram.com/pwachadinhos/" rel="noopener noreferrer">Instagram @pwachadinhos</a></nav>
     © AchadinhosPW. Não somos a Shopee nem o Mercado Livre; somos uma página independente de curadoria de ofertas.
   </footer>
 </div>
+<script src="/app.js" defer></script>
 </body>
 </html>
