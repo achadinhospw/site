@@ -34,31 +34,31 @@
   "rewrites": [
     {
       "source": "/notebooks",
-      "destination": "/index.html"
+      "destination": "/"
     },
     {
       "source": "/celulares",
-      "destination": "/index.html"
+      "destination": "/"
     },
     {
       "source": "/relogios",
-      "destination": "/index.html"
+      "destination": "/"
     },
     {
       "source": "/tablets",
-      "destination": "/index.html"
+      "destination": "/"
     },
     {
       "source": "/roupas-femininas",
-      "destination": "/index.html"
+      "destination": "/"
     },
     {
       "source": "/roupas-masculinas",
-      "destination": "/index.html"
+      "destination": "/"
     },
     {
       "source": "/roupas-infantis",
-      "destination": "/index.html"
+      "destination": "/"
     }
   ]
 }
