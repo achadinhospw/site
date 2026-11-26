@@ -5,13 +5,54 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self'; style-src 'self'; script-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
 <meta name="referrer" content="no-referrer">
-<title>Política de Privacidade · AchadinhosPW</title>
-<link rel="icon" href="favicon.png">
-<link rel="stylesheet" href="style.css">
+<title>Política de Privacidade · PW Achadinhos</title>
+<link rel="icon" href="/favicon.png">
+<link rel="stylesheet" href="/style.css">
 </head>
 <body>
+<input type="checkbox" id="mode-dark" class="vh" checked>
+<input type="checkbox" id="mode-colors" class="vh" checked>
+<input type="radio" name="palette" id="pal-gold" class="vh" checked>
+<input type="radio" name="palette" id="pal-indigo" class="vh">
+<input type="radio" name="palette" id="pal-orange" class="vh">
+<input type="radio" name="palette" id="pal-emerald" class="vh">
+<input type="radio" name="palette" id="pal-blue" class="vh">
+
 <div class="wrap">
-  <header class="top"><img src="logo-pw.png" alt="Logo PW"><a href="./">AchadinhosPW</a></header>
+  <header class="top">
+    <a class="brand" href="/">
+      <img src="/logo-pw.png" alt="Logo PW Achadinhos">
+      <span>
+        <span class="brand-name">PW <em>Achadinhos</em></span>
+        <span class="brand-sub">Dois amigos, mil descontos</span>
+      </span>
+    </a>
+
+    <details class="theme-picker">
+      <summary><span class="dot-current"></span>Aparência</summary>
+      <div class="theme-panel">
+        <div class="theme-title">Aparência</div>
+        <label class="toggle-row" for="mode-dark">
+          <span>Modo Escuro</span>
+          <span class="switch"></span>
+        </label>
+        <label class="toggle-row" for="mode-colors">
+          <span>Cores do Sistema</span>
+          <span class="switch"></span>
+        </label>
+
+        <div class="palette-heading">Paleta de Cores</div>
+        <div class="palette-list">
+          <label class="pal-opt" for="pal-gold"><span class="swatch swatch-gold"></span>PW Dourado</label>
+          <label class="pal-opt" for="pal-indigo"><span class="swatch swatch-indigo"></span>SaaS PF Índigo</label>
+          <label class="pal-opt" for="pal-orange"><span class="swatch swatch-orange"></span>Laranja Clássico</label>
+          <label class="pal-opt" for="pal-emerald"><span class="swatch swatch-emerald"></span>Esmeralda</label>
+          <label class="pal-opt" for="pal-blue"><span class="swatch swatch-blue"></span>Azul Oceano</label>
+        </div>
+      </div>
+    </details>
+  </header>
+
   <h1>Política de Privacidade</h1>
   <p class="small">Última atualização: 19 de novembro de 2026</p>
 
@@ -39,7 +80,7 @@
   <h2>6. Contato</h2>
   <p>Mensagem direta no Instagram <a href="https://www.instagram.com/pwachadinhos/" rel="noopener noreferrer">@pwachadinhos</a>.</p>
 
-  <footer><nav><a href="./">Início</a><a href="termos">Termos de Uso</a></nav>© AchadinhosPW</footer>
+  <footer><nav><a href="/">Início</a><a href="/termos">Termos de Uso</a></nav>© PW Achadinhos</footer>
 </div>
 </body>
 </html>

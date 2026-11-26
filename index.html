@@ -5,29 +5,89 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' https:; style-src 'self'; script-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'self'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
-<title>AchadinhosPW · Ofertas com desconto de verdade</title>
-<meta name="description" content="Os melhores achados da Shopee e do Mercado Livre, conferidos no histórico de preço.">
+<title>PW Achadinhos · Ofertas com desconto de verdade</title>
+<meta name="description" content="PW Achadinhos: dois amigos, mil descontos. Os melhores achados da Shopee e do Mercado Livre, conferidos no histórico de preço.">
 <link rel="icon" href="/favicon.png">
 <link rel="stylesheet" href="/style.css">
 </head>
 <body>
+<input type="checkbox" id="mode-dark" class="vh" checked>
+<input type="checkbox" id="mode-colors" class="vh" checked>
+<input type="radio" name="palette" id="pal-gold" class="vh" checked>
+<input type="radio" name="palette" id="pal-indigo" class="vh">
+<input type="radio" name="palette" id="pal-orange" class="vh">
+<input type="radio" name="palette" id="pal-emerald" class="vh">
+<input type="radio" name="palette" id="pal-blue" class="vh">
+
 <div class="wrap">
-  <header class="top"><img src="/logo-pw.png" alt="Logo PW"><a href="./">AchadinhosPW</a></header>
-  <nav class="cats">
-      <a href="/" class="ativo">Todas</a>
-      <a href="/notebooks">Notebooks</a>
-      <a href="/celulares">Celulares</a>
-      <a href="/relogios">Relógios e smartwatches</a>
-      <a href="/tablets">Tablets</a>
-      <a href="/roupas-femininas">Roupas femininas</a>
-      <a href="/roupas-masculinas">Roupas masculinas</a>
-      <a href="/roupas-infantis">Roupas infantis</a>
-  </nav>
+  <header class="top">
+    <a class="brand" href="/">
+      <img src="/logo-pw.png" alt="Logo PW Achadinhos">
+      <span>
+        <span class="brand-name">PW <em>Achadinhos</em></span>
+        <span class="brand-sub">Dois amigos, mil descontos</span>
+      </span>
+    </a>
 
-  <main id="vitrine" data-categoria="">
-    <h1>Ofertas com <em>desconto de verdade</em></h1>
-    <p class="lead">Os melhores achados da Shopee e do Mercado Livre, conferidos no histórico de preço.</p>
+    <details class="theme-picker">
+      <summary><span class="dot-current"></span>Aparência</summary>
+      <div class="theme-panel">
+        <div class="theme-title">Aparência</div>
+        <label class="toggle-row" for="mode-dark">
+          <span>Modo Escuro</span>
+          <span class="switch"></span>
+        </label>
+        <label class="toggle-row" for="mode-colors">
+          <span>Cores do Sistema</span>
+          <span class="switch"></span>
+        </label>
 
+        <div class="palette-heading">Paleta de Cores</div>
+        <div class="palette-list">
+          <label class="pal-opt" for="pal-gold"><span class="swatch swatch-gold"></span>PW Dourado</label>
+          <label class="pal-opt" for="pal-indigo"><span class="swatch swatch-indigo"></span>SaaS PF Índigo</label>
+          <label class="pal-opt" for="pal-orange"><span class="swatch swatch-orange"></span>Laranja Clássico</label>
+          <label class="pal-opt" for="pal-emerald"><span class="swatch swatch-emerald"></span>Esmeralda</label>
+          <label class="pal-opt" for="pal-blue"><span class="swatch swatch-blue"></span>Azul Oceano</label>
+        </div>
+      </div>
+    </details>
+  </header>
+
+  <section class="facade" aria-label="Fachada PW Achadinhos">
+    <div class="facade-content">
+      <div class="facade-top-row">
+        <span class="facade-badge">👑 Oficial · PW Achadinhos</span>
+        <button type="button" id="btn-lupa" class="btn-lupa" aria-expanded="false" aria-controls="painel-filtros" title="Abrir busca e filtros">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="11" cy="11" r="7"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <span>Pesquisar</span>
+          <span class="lupa-dot" aria-hidden="true"></span>
+        </button>
+      </div>
+      <p class="facade-title">PW <em>ACHADINHOS</em></p>
+      <p class="facade-sub">Dois amigos, mil descontos. Curadoria diária da Shopee e do Mercado Livre com histórico de preço conferido.</p>
+      <div class="facade-pills">
+        <span class="facade-pill">🛡️ Produtos Confiáveis</span>
+        <span class="facade-pill">⚡ Ofertas Imperdíveis</span>
+        <span class="facade-pill">🚚 Links Seguros</span>
+      </div>
+    </div>
+    <div class="facade-media">
+      <img src="/fachada-achadinhos.jpg" alt="PW Achadinhos — Dois amigos, mil descontos">
+    </div>
+  </section>
+
+  <div id="painel-filtros" class="filtros-wrap" hidden>
+    <div class="filtros-head">
+      <strong>🔎 Buscar e filtrar ofertas</strong>
+      <div class="filtros-head-actions">
+        <button type="button" id="btn-limpar-filtros" class="btn-mini">Limpar</button>
+        <button type="button" id="btn-fechar-filtros" class="btn-mini">✕ Fechar</button>
+      </div>
+    </div>
     <form id="filtros" class="filtros">
       <input type="search" name="busca" placeholder="Buscar produto" maxlength="60" aria-label="Buscar produto">
       <select name="ordem" aria-label="Ordenar por">
@@ -45,8 +105,26 @@
       <input type="number" name="min" placeholder="Preço mín." min="0" inputmode="numeric" aria-label="Preço mínimo">
       <input type="number" name="max" placeholder="Preço máx." min="0" inputmode="numeric" aria-label="Preço máximo">
     </form>
+  </div>
 
-    <p id="status" class="small" role="status"></p>
+  <nav class="cats">
+      <a href="/" class="ativo">Todas</a>
+      <a href="/notebooks">Notebooks</a>
+      <a href="/celulares">Celulares</a>
+      <a href="/relogios">Relógios e smartwatches</a>
+      <a href="/tablets">Tablets</a>
+      <a href="/roupas-femininas">Roupas femininas</a>
+      <a href="/roupas-masculinas">Roupas masculinas</a>
+      <a href="/roupas-infantis">Roupas infantis</a>
+  </nav>
+
+  <main id="vitrine" data-categoria="">
+    <div class="vitrine-head">
+      <h1>Ofertas com <em>desconto de verdade</em></h1>
+      <p id="status" class="small" role="status"></p>
+    </div>
+    <p class="lead">Os melhores achados da Shopee e do Mercado Livre, conferidos no histórico de preço.</p>
+
     <div id="lista" class="grade"></div>
   </main>
 
@@ -57,7 +135,7 @@
 
   <footer>
     <nav><a href="/termos">Termos de Uso</a><a href="/privacidade">Política de Privacidade</a><a href="https://www.instagram.com/pwachadinhos/" rel="noopener noreferrer">Instagram @pwachadinhos</a></nav>
-    © AchadinhosPW. Não somos a Shopee nem o Mercado Livre; somos uma página independente de curadoria de ofertas.
+    © PW Achadinhos. Não somos a Shopee nem o Mercado Livre; somos uma página independente de curadoria de ofertas.
   </footer>
 </div>
 <script src="/app.js" defer></script>

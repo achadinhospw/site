@@ -1,9 +1,94 @@
 (function () {
+  // ── Aparência e Paletas (salvas no navegador) ──
+  const modeDark = document.getElementById('mode-dark');
+  const modeColors = document.getElementById('mode-colors');
+  const palRadios = document.querySelectorAll('input[name="palette"]');
+  const themePicker = document.querySelector('.theme-picker');
+
+  try {
+    if (modeDark && localStorage.getItem('pw-dark') === '0') modeDark.checked = false;
+    if (modeColors && localStorage.getItem('pw-colors') === '0') modeColors.checked = false;
+    const savedPal = localStorage.getItem('pw-palette');
+    if (savedPal) {
+      const target = document.getElementById(savedPal);
+      if (target) target.checked = true;
+    }
+  } catch (_) {}
+
+  if (modeDark) {
+    modeDark.addEventListener('change', () => {
+      try { localStorage.setItem('pw-dark', modeDark.checked ? '1' : '0'); } catch (_) {}
+    });
+  }
+  if (modeColors) {
+    modeColors.addEventListener('change', () => {
+      try { localStorage.setItem('pw-colors', modeColors.checked ? '1' : '0'); } catch (_) {}
+    });
+  }
+  palRadios.forEach((r) => {
+    r.addEventListener('change', () => {
+      if (r.checked) {
+        try { localStorage.setItem('pw-palette', r.id); } catch (_) {}
+      }
+    });
+  });
+
+  if (themePicker) {
+    document.addEventListener('click', (e) => {
+      if (themePicker.open && !themePicker.contains(e.target)) themePicker.open = false;
+    });
+  }
+
+  // ── Vitrine de Ofertas ──
   const raiz = document.getElementById('vitrine');
   if (!raiz) return;
   const lista = document.getElementById('lista');
   const status = document.getElementById('status');
   const form = document.getElementById('filtros');
+  const btnLupa = document.getElementById('btn-lupa');
+  const painelFiltros = document.getElementById('painel-filtros');
+  const btnFechar = document.getElementById('btn-fechar-filtros');
+  const btnLimpar = document.getElementById('btn-limpar-filtros');
+  const campoBusca = form ? form.querySelector('input[name="busca"]') : null;
+
+  function setPainelAberto(aberto) {
+    if (!painelFiltros || !btnLupa) return;
+    painelFiltros.hidden = !aberto;
+    btnLupa.setAttribute('aria-expanded', aberto ? 'true' : 'false');
+    if (aberto && campoBusca) campoBusca.focus();
+  }
+
+  function atualizarIndicadorFiltro() {
+    if (!btnLupa || !form) return;
+    const fd = new FormData(form);
+    const ativo =
+      Boolean((fd.get('busca') || '').toString().trim()) ||
+      Boolean(fd.get('loja')) ||
+      Boolean(fd.get('min')) ||
+      Boolean(fd.get('max')) ||
+      fd.get('ordem') !== 'custo-beneficio';
+    btnLupa.classList.toggle('tem-filtro', ativo);
+  }
+
+  if (btnLupa && painelFiltros) {
+    btnLupa.addEventListener('click', () => setPainelAberto(painelFiltros.hidden));
+  }
+  if (btnFechar) {
+    btnFechar.addEventListener('click', () => setPainelAberto(false));
+  }
+  if (btnLimpar && form) {
+    btnLimpar.addEventListener('click', () => {
+      form.reset();
+      atualizarIndicadorFiltro();
+      carregar();
+    });
+  }
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && painelFiltros && !painelFiltros.hidden) {
+      setPainelAberto(false);
+    }
+  });
+
   const NICHOS = {
     'notebooks': ['Notebooks', 'Os melhores notebooks em oferta, ranqueados por custo-benefício, qualidade e preço.'],
     'celulares': ['Celulares', 'Celulares e smartphones com desconto conferido no histórico de preço.'],
@@ -17,7 +102,7 @@
   const categoriaFixa = NICHOS[slug] ? slug : '';
   if (categoriaFixa) {
     const [nome, desc] = NICHOS[categoriaFixa];
-    document.title = `${nome} em oferta · AchadinhosPW`;
+    document.title = `${nome} em oferta · PW Achadinhos`;
     document.querySelector('h1').textContent = nome;
     document.querySelector('.lead').textContent = desc;
     const md = document.querySelector('meta[name=description]');
@@ -92,7 +177,10 @@
     return el;
   }
 
+  let debounceTimer = null;
+
   async function carregar() {
+    atualizarIndicadorFiltro();
     const p = new URLSearchParams(new FormData(form));
     if (categoriaFixa) p.set('categoria', categoriaFixa);
     for (const [k, v] of [...p]) if (!v) p.delete(k);
@@ -115,6 +203,12 @@
   }
 
   form.addEventListener('change', carregar);
+  if (campoBusca) {
+    campoBusca.addEventListener('input', () => {
+      clearTimeout(debounceTimer);
+      debounceTimer = setTimeout(carregar, 350);
+    });
+  }
   form.addEventListener('submit', (e) => { e.preventDefault(); carregar(); });
   carregar();
 })();
