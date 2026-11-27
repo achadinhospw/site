@@ -59,6 +59,10 @@
     {
       "source": "/roupas-infantis",
       "destination": "/"
+    },
+    {
+      "source": "/blog",
+      "destination": "/blog/index.html"
     }
   ]
 }
