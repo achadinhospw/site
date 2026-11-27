@@ -1,13 +1,11 @@
 (function () {
   // ── Aparência e Paletas (salvas no navegador) ──
   const modeDark = document.getElementById('mode-dark');
-  const modeColors = document.getElementById('mode-colors');
   const palRadios = document.querySelectorAll('input[name="palette"]');
   const themePicker = document.querySelector('.theme-picker');
 
   try {
     if (modeDark && localStorage.getItem('pw-dark') === '0') modeDark.checked = false;
-    if (modeColors && localStorage.getItem('pw-colors') === '0') modeColors.checked = false;
     const savedPal = localStorage.getItem('pw-palette');
     if (savedPal) {
       const target = document.getElementById(savedPal);
@@ -18,11 +16,6 @@
   if (modeDark) {
     modeDark.addEventListener('change', () => {
       try { localStorage.setItem('pw-dark', modeDark.checked ? '1' : '0'); } catch (_) {}
-    });
-  }
-  if (modeColors) {
-    modeColors.addEventListener('change', () => {
-      try { localStorage.setItem('pw-colors', modeColors.checked ? '1' : '0'); } catch (_) {}
     });
   }
   palRadios.forEach((r) => {

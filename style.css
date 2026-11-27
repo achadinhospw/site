@@ -15,7 +15,7 @@
   --shadow: 0 12px 34px rgba(0, 0, 0, 0.42);
   --card-shadow: 0 4px 16px rgba(0, 0, 0, 0.28);
 
-  /* Paleta padrão: PW Dourado */
+  /* Paleta padrão: Dourado */
   --accent: #f59e0b;
   --accent2: #fbbf24;
   --accent-fg: #111111;
@@ -24,7 +24,7 @@
   --accent-glow: rgba(245, 158, 11, 0.1);
 }
 
-/* Modo Claro (estilo SaaS PF / FinanceOS) */
+/* Modo Claro */
 body:not(:has(#mode-dark:checked)) {
   --bg: #f4f7ff;
   --surface: #ffffff;
@@ -48,7 +48,7 @@ body:not(:has(#mode-dark:checked)) {
   --accent-glow: rgba(217, 119, 6, 0.07);
 }
 
-/* Paletas de Cores (como no SaaS PF) */
+/* Paletas de Cores */
 body:has(#pal-indigo:checked) {
   --accent: #6366f1;
   --accent2: #818cf8;
@@ -105,11 +105,6 @@ body:not(:has(#mode-dark:checked)):has(#pal-blue:checked) {
   --accent2: #3b82f6;
 }
 
-/* Cores do Sistema desligadas (monocromático como no SaaS PF) */
-body:not(:has(#mode-colors:checked)) {
-  filter: grayscale(1);
-}
-
 * {
   box-sizing: border-box;
 }
@@ -129,7 +124,7 @@ body {
     radial-gradient(560px 280px at 90% 6%, var(--accent-glow), transparent 70%);
   color: var(--fg);
   font: 16px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  transition: background-color 0.25s ease, color 0.25s ease, filter 0.25s ease;
+  transition: background-color 0.25s ease, color 0.25s ease;
 }
 
 .vh {
@@ -198,7 +193,7 @@ header.top {
   font-weight: 500;
 }
 
-/* ── Seletor de Aparência / Paleta (estilo SaaS PF) ── */
+/* ── Seletor de Aparência / Paleta ── */
 .theme-picker {
   position: relative;
 }
@@ -296,13 +291,11 @@ header.top {
   transition: transform 0.2s ease;
 }
 
-body:has(#mode-dark:checked) label[for="mode-dark"] .switch,
-body:has(#mode-colors:checked) label[for="mode-colors"] .switch {
+body:has(#mode-dark:checked) label[for="mode-dark"] .switch {
   background: var(--accent);
 }
 
-body:has(#mode-dark:checked) label[for="mode-dark"] .switch::after,
-body:has(#mode-colors:checked) label[for="mode-colors"] .switch::after {
+body:has(#mode-dark:checked) label[for="mode-dark"] .switch::after {
   transform: translateX(16px);
 }
 
